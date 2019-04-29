@@ -10,7 +10,7 @@ mglearn.plots.plot_knn_classification(n_neighbors=3)
 plt.show()
 
 
-"""KNeighborsClassifier
+"""KNeighborsClassifier with forge dataset
 """
 # Load datasets
 from sklearn.model_selection import train_test_split
@@ -29,7 +29,7 @@ print("Prediction: {}".format(classifier.predict(X_test)))
 # Evaluate
 print("Accuracy: {:.2f}".format(classifier.score(X_test, y_test)))
 
-# Decision boundary with forge dataset
+# Decision boundary
 fig, axes = plt.subplots(1, 3, figsize=(10, 3))
 
 for n_neighbors, ax in zip([1, 3, 9], axes):
