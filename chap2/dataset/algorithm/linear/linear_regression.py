@@ -25,3 +25,11 @@ print("Test R^2: {:.2f}".format(regression.score(X_test, y_test)))
 
 """LinearRegression with Boston dataset
 """
+X, y = mglearn.datasets.load_extended_boston()
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+regressor = LinearRegression()
+
+regression = regressor.fit(X_train, y_train)
+print("Train R^2: {:.2f}".format(regression.score(X_train, y_train)))
+print("Test R^2: {:.2f}".format(regression.score(X_test, y_test)))
