@@ -65,9 +65,9 @@ X_test_pca = pca.transform(X_test)
 
 # Use KNN with PCA
 knn = KNeighborsClassifier(n_neighbors=1)
-knn.fit(X_train, y_train)
+knn.fit(X_train_pca, y_train)
 
-print("1-NN Test accuracy: {:.2f}".format(knn.score(X_test, y_test)))
+print("1-NN Test accuracy: {:.2f}".format(knn.score(X_test_pca, y_test)))
 
 
 """Plot Principal Components(engienface)
