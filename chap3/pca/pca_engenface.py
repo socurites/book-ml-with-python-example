@@ -57,3 +57,26 @@ print("1-NN Test accuracy: {:.2f}".format(knn.score(X_test, y_test)))
 
 """Use PCA with whitening
 """
+from sklearn.decomposition import PCA
+pca = PCA(n_components=100, whiten=True, random_state=0).fit(X_train)
+X_train_pca = pca.transform(X_train)
+X_test_pca = pca.transform(X_test)
+
+
+# Use KNN with PCA
+knn = KNeighborsClassifier(n_neighbors=1)
+knn.fit(X_train, y_train)
+
+print("1-NN Test accuracy: {:.2f}".format(knn.score(X_test, y_test)))
+
+
+"""Plot Principal Components(engienface)
+"""
+fig, axes = plt.subplots(3, 5, figsize=(15,12),
+                         subplot_kw={'xticks': (), 'yticks': ()})
+
+for i, (component, ax) in enumerate(zip(pca.components_, axes.ravel())):
+    ax.imshow(component.reshape(image_shape), cmap='viridis')
+    ax.set_title("Principal Component {}".format(i + 1))
+
+plt.show()
